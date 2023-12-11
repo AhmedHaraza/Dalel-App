@@ -1,4 +1,5 @@
-import 'package:dalel_app/core/routes/app_string.dart';
+import 'package:dalel_app/core/utils/app_string.dart';
+import 'package:dalel_app/feature/onBording/peresentation/views/on_bording_view.dart';
 import 'package:dalel_app/feature/splash/peresentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +21,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) => const SplashView(),
         );
-      // case Routes.onBordingRoute:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const OnBordingView(),
-      //   );
+      case Routes.onBordingRoute:
+        return MaterialPageRoute(
+          builder: (context) => const OnBordingView(),
+        );
       // case Routes.loginRoute:
       //   return MaterialPageRoute(
       //     builder: (context) => const LoginView(),

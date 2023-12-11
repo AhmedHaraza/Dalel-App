@@ -1,4 +1,4 @@
-import 'package:dalel_app/core/utils/app_routers.dart';
+import 'package:dalel_app/core/routes/app_routers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
