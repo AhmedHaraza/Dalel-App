@@ -1,5 +1,4 @@
 import 'package:dalel_app/core/functions/navigation.dart';
-import 'package:dalel_app/core/utils/app_functions.dart';
 import 'package:dalel_app/core/utils/app_string.dart';
 import 'package:dalel_app/core/routes/app_routers.dart';
 import 'package:dalel_app/core/utils/app_text_styles.dart';
@@ -16,7 +15,9 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    delayNavigation(context: context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      delayedNavigation(context: context);
+    });
   }
 
   @override
@@ -29,4 +30,9 @@ class _SplashViewState extends State<SplashView> {
       )),
     );
   }
+}
+
+Future<dynamic> delayedNavigation({required BuildContext context}) {
+  return Future.delayed(const Duration(seconds: 2),
+      goNext(context: context, path: Routes.onBordingRoute));
 }

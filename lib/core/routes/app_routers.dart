@@ -3,7 +3,6 @@ import 'package:dalel_app/feature/onBording/peresentation/views/on_bording_view.
 import 'package:dalel_app/feature/splash/peresentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
-
 class Routes {
   static const String splashRoute = "/";
   static const String loginRoute = "/login";
