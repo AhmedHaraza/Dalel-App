@@ -1,13 +1,15 @@
 import 'package:dalel_app/core/utils/app_string.dart';
+import 'package:dalel_app/feature/auth/peresentation/views/sign_in_view.dart';
+import 'package:dalel_app/feature/auth/peresentation/views/sing_up_view.dart';
 import 'package:dalel_app/feature/onBording/peresentation/views/on_bording_view.dart';
 import 'package:dalel_app/feature/splash/peresentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
   static const String splashRoute = "/";
-  static const String loginRoute = "/login";
+  static const String signInViewRoute = "/signIn";
   static const String onBordingRoute = "/onBording";
-  static const String registerRoute = "/register";
+  static const String singUpViewRoute = "/singUp";
   static const String forgotPasswordRoute = "/forgotPassword";
   static const String mainRoute = "/main";
   static const String storeDiteilsRoute = "/storeDiteils";
@@ -24,14 +26,14 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) => const OnBordingView(),
         );
-      // case Routes.loginRoute:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const LoginView(),
-      //   );
-      // case Routes.registerRoute:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const RegisterView(),
-      //   );
+      case Routes.signInViewRoute:const SignInView();
+        return MaterialPageRoute(
+          builder: (context) => const SignInView(),
+        );
+      case Routes.singUpViewRoute:
+        return MaterialPageRoute(
+          builder: (context) => const SingUpView(),
+        );
       // case Routes.forgotPasswordRoute:
       //   return MaterialPageRoute(
       //     builder: (context) => const ForgotPasswordView(),
