@@ -5,13 +5,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OnBordingWidgetBody extends StatelessWidget {
-  const OnBordingWidgetBody({Key? key, required this.controller}) : super(key: key);
+  const OnBordingWidgetBody({Key? key, required this.controller, required this.onPageChanged}) : super(key: key);
   final PageController controller;
+  final void Function(int)? onPageChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 500,
       child: PageView.builder(
+        onPageChanged:onPageChanged,
         physics: const BouncingScrollPhysics(),
         itemCount: onBordingData.length,
         itemBuilder: (context, index) {
