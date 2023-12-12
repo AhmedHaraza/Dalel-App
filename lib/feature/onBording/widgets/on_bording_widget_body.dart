@@ -15,13 +15,23 @@ class _OnBordingWidgetBodyState extends State<OnBordingWidgetBody> {
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 500,
       child: PageView.builder(
+        physics: const BouncingScrollPhysics(),
         itemCount: 3,
         itemBuilder: (context, index) {
           return Column(
             children: [
-              Image.asset(Assets.resourceImagesOnBoarding1),
+              Container(
+                height: 290,
+                width: 343,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(Assets.resourceImagesOnBoarding1),
+                      fit: BoxFit.fill),
+                ),
+              ),
               const SizedBox(height: 24),
               CustomSmoothWidget(pageController: _pageController),
               const SizedBox(height: 32),
@@ -30,6 +40,8 @@ class _OnBordingWidgetBodyState extends State<OnBordingWidgetBody> {
                 style: CustomTextStyles.poppins400style20
                     .copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 16),
               Text(

@@ -9,15 +9,19 @@ class OnBordingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16,),
-          child: Column(
-            children: [
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: const [
               SizedBox(height: 40),
               CustomNavBar(),
               OnBordingWidgetBody(),
+              SizedBox(height: 88),
               CustomElevatedBouttonWidget(text: AppStrings.next),
               SizedBox(height: 17),
             ],
