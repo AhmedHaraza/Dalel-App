@@ -1,4 +1,6 @@
+import 'package:dalel_app/core/database/cache/cache_helper.dart';
 import 'package:dalel_app/core/functions/navigation.dart';
+import 'package:dalel_app/core/service/service_locator.dart';
 import 'package:dalel_app/core/utils/app_string.dart';
 import 'package:dalel_app/core/routes/app_routers.dart';
 import 'package:dalel_app/core/utils/app_text_styles.dart';
@@ -14,10 +16,17 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    super.initState();
+    bool isOnBordingVisited =
+        getIt<CacheHelper>().getData(key: "on Bording Visited") ?? false;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      delayedNavigation(context: context);
+      if (isOnBordingVisited == true) {
+        delayedNavigation(context: context, path: Routes.singUpViewRoute);
+      } else {
+        delayedNavigation(context: context, path: Routes.onBordingRoute);
+      }
     });
+
+    super.initState();
   }
 
   @override
@@ -32,7 +41,8 @@ class _SplashViewState extends State<SplashView> {
   }
 }
 
-Future<dynamic> delayedNavigation({required BuildContext context}) {
-  return Future.delayed(const Duration(seconds: 2),
-      goNext(context: context, path: Routes.onBordingRoute));
+Future<dynamic> delayedNavigation(
+    {required BuildContext context, required String path}) {
+  return Future.delayed(
+      const Duration(seconds: 2), goNext(context: context, path: path));
 }

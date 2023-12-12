@@ -1,5 +1,6 @@
 import 'package:dalel_app/core/functions/navigation.dart';
 import 'package:dalel_app/core/routes/app_routers.dart';
+import 'package:dalel_app/feature/onBording/peresentation/views/functions/on_Bording_visited.dart';
 import 'package:dalel_app/feature/onBording/widgets/custom_nav_bar_widget.dart';
 import 'package:dalel_app/feature/onBording/widgets/get_boutton_widget.dart';
 import 'package:dalel_app/feature/onBording/widgets/on_bording_widget_body.dart';
@@ -30,6 +31,7 @@ class _OnBordingViewState extends State<OnBordingView> {
               const SizedBox(height: 40),
               CustomNavBar(
                 onTap: () {
+                  onBordingVisited();
                   goNext(context: context, path: Routes.singUpViewRoute);
                 },
               ),
@@ -50,7 +52,6 @@ class _OnBordingViewState extends State<OnBordingView> {
       ),
     );
   }
-
   @override
   void dispose() {
     super.dispose();
