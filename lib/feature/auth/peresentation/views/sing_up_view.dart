@@ -13,7 +13,7 @@ class SingUpView extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: 152)),
+            SliverToBoxAdapter(child: SizedBox(height: 120)),
             SliverToBoxAdapter(child: WelcomeText(text: AppStrings.welcome)),
             SliverToBoxAdapter(child: SizedBox(height: 40)),
             SliverToBoxAdapter(child: CustomSingUPForm()),
