@@ -10,3 +10,6 @@ final class SingUpFailureState extends AuthState {
   final String errorMasage;
   SingUpFailureState({required this.errorMasage});
 }
+
+final class TermesAndConditionsUpDataState extends AuthState {}
+

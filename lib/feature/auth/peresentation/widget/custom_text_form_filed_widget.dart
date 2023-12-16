@@ -3,7 +3,8 @@ import 'package:dalel_app/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormFiledWidget extends StatelessWidget {
-  const CustomTextFormFiledWidget({Key? key, required this.lable,  this.onChanged,  this.onFieldSubmitted})
+  const CustomTextFormFiledWidget(
+      {Key? key, required this.lable, this.onChanged, this.onFieldSubmitted})
       : super(key: key);
   final Widget lable;
   final void Function(String)? onChanged;
@@ -13,6 +14,15 @@ class CustomTextFormFiledWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "This fieldis required";
+          }
+          else
+          {
+            return null;
+          }
+        },
         onChanged: onChanged,
         onFieldSubmitted: onFieldSubmitted,
         onTapOutside: (event) => FocusScope.of(context).unfocus(),
@@ -29,6 +39,7 @@ class CustomTextFormFiledWidget extends StatelessWidget {
     );
   }
 }
+
 OutlineInputBorder getBoarderStyle() {
   return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4),
