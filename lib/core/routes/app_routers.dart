@@ -1,9 +1,12 @@
+import 'package:dalel_app/core/service/service_locator.dart';
 import 'package:dalel_app/core/utils/app_string.dart';
+import 'package:dalel_app/feature/auth/peresentation/auth_cubit/auth_cubit.dart';
 import 'package:dalel_app/feature/auth/peresentation/views/sign_in_view.dart';
 import 'package:dalel_app/feature/auth/peresentation/views/sing_up_view.dart';
 import 'package:dalel_app/feature/onBording/peresentation/views/on_bording_view.dart';
 import 'package:dalel_app/feature/splash/peresentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Routes {
   static const String splashRoute = "/";
@@ -26,13 +29,19 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) => const OnBordingView(),
         );
-      case Routes.signInViewRoute:const SignInView();
+      case Routes.signInViewRoute:
         return MaterialPageRoute(
           builder: (context) => const SignInView(),
         );
       case Routes.singUpViewRoute:
         return MaterialPageRoute(
-          builder: (context) => const SingUpView(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<AuthCubit>(),
+            child: BlocProvider(
+              create: (context) => getIt<AuthCubit>(),
+              child: const SingUpView(),
+            ),
+          ),
         );
       // case Routes.forgotPasswordRoute:
       //   return MaterialPageRoute(
