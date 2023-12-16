@@ -5,6 +5,7 @@ import 'package:dalel_app/feature/auth/peresentation/auth_cubit/auth_state.dart'
 import 'package:dalel_app/feature/auth/peresentation/widget/custom_text_form_filed_widget.dart';
 import 'package:dalel_app/feature/auth/peresentation/widget/tearm_and_condation_widget.dart';
 import 'package:dalel_app/feature/onBording/widgets/custom_boutton_widget.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,15 +41,24 @@ class CustomSingUPForm extends StatelessWidget {
                   },
                 ),
                 CustomTextFormFiledWidget(
-                  lable: const Text(AppStrings.password),
-                  onChanged: (password) {
-                    authcubit.password = password;
-                  },
-                ),
+                    lable: const Text(AppStrings.password),
+                    onChanged: (password) {
+                      authcubit.password = password;
+                    },
+                    suffixIcon: IconButton(
+                      icon: Icon(authcubit.obscurePasswordTextValue == true
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      onPressed: () {
+                        authcubit.obscurePasswordText();
+                      },
+                    )),
                 const TermsAndConditionWidget(),
                 CustomElevatedBouttonWidget(
                     text: AppStrings.signUp,
-                    color: authcubit.termesAndConditionsCheckBoxValues == false ? AppColors.grey :null,
+                    color: authcubit.termesAndConditionsCheckBoxValues == false
+                        ? AppColors.grey
+                        : null,
                     onPressed: () {
                       if (authcubit.termesAndConditionsCheckBoxValues == true) {
                         if (authcubit.singUpFormKey.currentState!.validate()) {

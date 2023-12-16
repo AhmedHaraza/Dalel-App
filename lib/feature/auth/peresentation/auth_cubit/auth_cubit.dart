@@ -10,6 +10,7 @@ class AuthCubit extends Cubit<AuthState> {
   String? firstName;
   String? lastName;
   String? emailAddress;
+  bool obscurePasswordTextValue = false;
   String? password;
   bool? termesAndConditionsCheckBoxValues = false;
   final GlobalKey<FormState> singUpFormKey = GlobalKey();
@@ -39,5 +40,14 @@ class AuthCubit extends Cubit<AuthState> {
   void updataTermesAndConditionsCheckBox({required newValue}) {
     termesAndConditionsCheckBoxValues = newValue;
     emit(TermesAndConditionsUpDataState());
+  }
+
+  void obscurePasswordText() {
+    if (obscurePasswordTextValue == true) {
+      obscurePasswordTextValue = false;
+    } else {
+      obscurePasswordTextValue = true;
+    }
+    emit(ObscurePasswordTextUpdataState());
   }
 }

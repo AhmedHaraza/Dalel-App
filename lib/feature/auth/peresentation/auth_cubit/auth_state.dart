@@ -12,4 +12,5 @@ final class SingUpFailureState extends AuthState {
 }
 
 final class TermesAndConditionsUpDataState extends AuthState {}
+final class ObscurePasswordTextUpdataState extends AuthState {}
 
