@@ -21,7 +21,7 @@ class CustomSingUPForm extends StatelessWidget {
       listener: (context, state) {
         if (state is SingUpSucsessState) {
           showToast(errorMasage: "Account Created Successfully");
-          goNext(context: context, path: Routes.signInViewRoute);
+          goNext(context: context, path: Routes.homeViewRouter);
         } else if (state is SingUpFailureState) {
           showToast(errorMasage: state.errorMasage);
         }

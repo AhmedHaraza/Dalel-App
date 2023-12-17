@@ -4,6 +4,7 @@ import 'package:dalel_app/core/service/service_locator.dart';
 import 'package:dalel_app/core/utils/app_string.dart';
 import 'package:dalel_app/core/routes/app_routers.dart';
 import 'package:dalel_app/core/utils/app_text_styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -20,7 +21,9 @@ class _SplashViewState extends State<SplashView> {
         getIt<CacheHelper>().getData(key: "on Bording Visited") ?? false;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isOnBordingVisited == true) {
-        delayedNavigation(context: context, path: Routes.singUpViewRoute);
+        FirebaseAuth.instance.currentUser == null
+            ? delayedNavigation(context: context, path: Routes.singUpViewRoute)
+            : delayedNavigation(context: context, path: Routes.homeViewRouter);
       } else {
         delayedNavigation(context: context, path: Routes.onBordingRoute);
       }

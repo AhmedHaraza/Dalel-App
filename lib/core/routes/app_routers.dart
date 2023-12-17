@@ -1,8 +1,8 @@
-import 'package:dalel_app/core/service/service_locator.dart';
 import 'package:dalel_app/core/utils/app_string.dart';
 import 'package:dalel_app/feature/auth/peresentation/auth_cubit/auth_cubit.dart';
 import 'package:dalel_app/feature/auth/peresentation/views/sign_in_view.dart';
 import 'package:dalel_app/feature/auth/peresentation/views/sing_up_view.dart';
+import 'package:dalel_app/feature/home/peresentation/views/home_view.dart';
 import 'package:dalel_app/feature/onBording/peresentation/views/on_bording_view.dart';
 import 'package:dalel_app/feature/splash/peresentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +16,7 @@ class Routes {
   static const String forgotPasswordRoute = "/forgotPassword";
   static const String mainRoute = "/main";
   static const String storeDiteilsRoute = "/storeDiteils";
+  static const String homeViewRouter = "/home";
 }
 
 class RouteGenerator {
@@ -36,17 +37,17 @@ class RouteGenerator {
       case Routes.singUpViewRoute:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
+            create: (context) => AuthCubit(),
             child: BlocProvider(
-              create: (context) => getIt<AuthCubit>(),
+              create: (context) => AuthCubit(),
               child: const SingUpView(),
             ),
           ),
         );
-      // case Routes.forgotPasswordRoute:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const ForgotPasswordView(),
-      //   );
+      case Routes.homeViewRouter:
+        return MaterialPageRoute(
+          builder: (context) => const HomeView(),
+        );
       // case Routes.mainRoute:
       //   return MaterialPageRoute(
       //     builder: (context) => const MainView(),
